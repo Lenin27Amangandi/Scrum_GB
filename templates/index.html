@@ -20,9 +20,15 @@
             <label for="fecha">Fecha</label>
             <input id="fecha" name="fecha" type="date" required>
 
+            <label for="facultad">Filtrar por facultad</label>
+            <select id="facultad"><option value="">Todas las facultades</option>
+            {% for facultad in laboratorios|map(attribute='facultad')|unique %}<option value="{{ facultad }}">{{ facultad }}</option>{% endfor %}</select>
+            <label for="filtro-horario">Filtrar por horario</label>
+            <select id="filtro-horario"><option value="">Todas las franjas</option>
+            <option value="07:00 – 09:00">07:00-09:00</option><option value="09:00 – 11:00">09:00-11:00</option><option value="11:00 – 13:00">11:00-13:00</option><option value="14:00 – 16:00">14:00-16:00</option></select>
             <label for="laboratorio">Laboratorio</label>
             <select id="laboratorio" name="laboratorio" required>
-            {% for lab in laboratorios %}<option value="{{ lab.id }}">{{ lab.nombre }}</option>{% endfor %}
+            {% for lab in laboratorios %}<option data-facultad="{{ lab.facultad }}" value="{{ lab.id }}">{{ lab.nombre }}</option>{% endfor %}
             </select>
             <label for="correo">Correo institucional</label><input id="correo" name="correo" type="email" required>
             <label for="codigo_unico">Código único del estudiante</label><input id="codigo_unico" name="codigo_unico" required>
@@ -49,7 +55,8 @@
         <p class="leyenda"><span data-state="disponible">Verde: Disponible</span> · <span data-state="ocupado">Rojo: Ocupado</span> · <span data-state="mantenimiento">Amarillo: Mantenimiento</span></p>
         <p id="estado-carga" role="status"></p><ul id="franjas" class="franjas"></ul></section>
         <h2>Catálogo de laboratorios</h2>
-        {% for lab in laboratorios %}<details><summary>{{ lab.nombre }} · {{ lab.capacidad }} personas</summary><p>{{ lab.edificio }} · {{ lab.facultad }}</p><ul>{% for equipo in lab.equipos %}<li>{{ equipo.nombre }}: {{ equipo.cantidad }}</li>{% endfor %}</ul></details>{% endfor %}
+        <p id="resumen-filtro" role="status"></p>
+        {% for lab in laboratorios %}<details data-laboratorio="{{ lab.id }}" data-facultad="{{ lab.facultad }}"><summary>{{ lab.nombre }} · {{ lab.capacidad }} personas</summary><p>{{ lab.edificio }} · {{ lab.facultad }}</p><ul class="disponibilidad-lab franjas" aria-label="Disponibilidad"></ul><ul>{% for equipo in lab.equipos %}<li>{{ equipo.nombre }}: {{ equipo.cantidad }}</li>{% endfor %}</ul></details>{% endfor %}
         <h2>Franjas bloqueadas</h2>
         {% if reservas %}
             <ul class="reservas">

@@ -148,8 +148,7 @@ def franjas_api():
         abort(400)
     franjas = []
     with conectar() as conexion:
-        for hora in range(8, 18):
-            inicio, fin = f'{hora:02d}:00', f'{hora+1:02d}:00'
+        for inicio, fin in [('07:00', '09:00'), ('09:00', '11:00'), ('11:00', '13:00'), ('14:00', '16:00')]:
             params = (fecha, laboratorio, fin, inicio)
             mantenimiento = conexion.execute('SELECT 1 FROM mantenimientos WHERE fecha=? AND laboratorio=? AND hora_inicio < ? AND hora_fin > ?', params).fetchone()
             ocupada = conexion.execute('SELECT 1 FROM reservas WHERE fecha=? AND laboratorio=? AND hora_inicio < ? AND hora_fin > ?', params).fetchone()

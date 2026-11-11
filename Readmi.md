@@ -7,3 +7,6 @@ El flujo principal integra catálogo CSV, formulario con correo @epn.edu.ec, có
 Pruebas: `npm test`, `python3 -m unittest discover -s backend/tests -v` y `python3 -m unittest discover -s tests -p 'test_*.py' -v`.
 
 Verificar: seleccionar laboratorio y fecha, reservar con los campos completos, revisar comprobante, volver y seleccionar la misma fecha para ver rojo. Una reserva cruzada debe rechazarse. Sin reserva se muestra verde; un registro en mantenimientos se muestra amarillo y bloquea reservas.
+
+## HU-02: filtro por facultad y horario
+Seleccionar facultad filtra el catálogo y el selector de laboratorios sin recargar. Seleccionar horario muestra la disponibilidad de esa franja en cada laboratorio visible y completa las horas de reserva. Franjas: 07:00-09:00, 09:00-11:00, 11:00-13:00 y 14:00-16:00. Cambiar fecha actualiza los estados desde SQLite. Verificar también Todas las facultades y Todas las franjas, y una reserva que ocupe parcialmente una franja.
