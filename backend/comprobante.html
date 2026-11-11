@@ -1,0 +1,305 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comprobante de Reserva - EPN</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f1f3f6;
+            padding: 30px 15px;
+            color: #333;
+        }
+
+        .contenedor {
+            max-width: 650px;
+            margin: auto;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.10);
+        }
+
+        .encabezado {
+            background: #123b67;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        .encabezado h1 {
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+
+        .encabezado p {
+            font-size: 14px;
+        }
+
+        .contenido {
+            padding: 30px;
+        }
+
+        .estado {
+            background: #d9f5e2;
+            color: #16813d;
+            padding: 12px;
+            text-align: center;
+            border-radius: 6px;
+            font-weight: bold;
+            margin-bottom: 25px;
+        }
+
+        .codigo {
+            text-align: center;
+            background: #f0f5fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+        }
+
+        .codigo h2 {
+            color: #123b67;
+            font-size: 25px;
+            margin-top: 10px;
+            letter-spacing: 2px;
+        }
+
+        .seccion {
+            margin-bottom: 25px;
+        }
+
+        .seccion h3 {
+            color: #123b67;
+            border-bottom: 2px solid #123b67;
+            padding-bottom: 8px;
+            margin-bottom: 15px;
+        }
+
+        .dato {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .dato strong {
+            color: #555;
+        }
+
+        .dato span {
+            text-align: right;
+        }
+
+        .mensaje {
+            background: #f0f5fa;
+            padding: 18px;
+            text-align: center;
+            border-radius: 8px;
+            margin-top: 20px;
+            line-height: 1.5;
+        }
+
+        .acciones {
+            display: flex;
+            gap: 10px;
+            margin-top: 25px;
+        }
+
+        button {
+            flex: 1;
+            padding: 14px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .btn-imprimir {
+            background: #123b67;
+            color: white;
+        }
+
+        .btn-volver {
+            background: #e5e7eb;
+            color: #333;
+        }
+
+        button:hover {
+            opacity: 0.85;
+        }
+
+        .pie {
+            text-align: center;
+            color: #777;
+            padding: 20px;
+            font-size: 12px;
+        }
+
+        @media (max-width: 480px) {
+            .contenido {
+                padding: 20px;
+            }
+
+            .dato {
+                flex-direction: column;
+                gap: 5px;
+            }
+
+            .dato span {
+                text-align: left;
+            }
+
+            .acciones {
+                flex-direction: column;
+            }
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+
+            .contenedor {
+                box-shadow: none;
+            }
+
+            .acciones {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="contenedor">
+
+        <header class="encabezado">
+            <h1>EPN</h1>
+            <p>Escuela Politécnica Nacional</p>
+            <br>
+            <h2>COMPROBANTE DE RESERVA</h2>
+        </header>
+
+        <main class="contenido">
+
+            <div class="estado">
+                RESERVA CONFIRMADA
+            </div>
+
+            <div class="codigo">
+                <p>CÓDIGO ÚNICO DE RESERVA</p>
+                <h2 id="codigoReserva">EPN-2026-X92</h2>
+            </div>
+
+            <section class="seccion">
+                <h3>Datos del usuario</h3>
+
+                <div class="dato">
+                    <strong>Nombre:</strong>
+                    <span>Juan Pérez</span>
+                </div>
+
+                <div class="dato">
+                    <strong>Correo:</strong>
+                    <span>usuario@epn.edu.ec</span>
+                </div>
+
+                <div class="dato">
+                    <strong>Tipo de usuario:</strong>
+                    <span>Estudiante</span>
+                </div>
+            </section>
+
+            <section class="seccion">
+                <h3>Datos de la reserva</h3>
+
+                <div class="dato">
+                    <strong>Laboratorio:</strong>
+                    <span>Laboratorio de Redes</span>
+                </div>
+
+                <div class="dato">
+                    <strong>Edificio:</strong>
+                    <span>Facultad de Sistemas</span>
+                </div>
+
+                <div class="dato">
+                    <strong>Fecha:</strong>
+                    <span>15/11/2026</span>
+                </div>
+
+                <div class="dato">
+                    <strong>Horario:</strong>
+                    <span>09:00 - 11:00</span>
+                </div>
+
+                <div class="dato">
+                    <strong>Motivo:</strong>
+                    <span>Práctica académica</span>
+                </div>
+            </section>
+
+            <div class="mensaje">
+                <strong>¡Reserva registrada correctamente!</strong>
+                <p>
+                    Presente este comprobante al ingresar
+                    al laboratorio.
+                </p>
+            </div>
+
+            <div class="acciones">
+                <button class="btn-imprimir" onclick="window.print()">
+                    Descargar / Imprimir PDF
+                </button>
+
+                <button class="btn-volver" onclick="history.back()">
+                    Volver
+                </button>
+            </div>
+
+        </main>
+
+        <footer class="pie">
+            Escuela Politécnica Nacional - Sistema de Reserva de Laboratorios
+        </footer>
+
+    </div>
+
+    <script>
+        // Generación de código de reserva de ejemplo
+        function generarCodigo() {
+            const caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            let codigo = "";
+
+            for (let i = 0; i < 3; i++) {
+                codigo += caracteres.charAt(
+                    Math.floor(Math.random() * caracteres.length)
+                );
+            }
+
+            return "EPN-2026-" + codigo;
+        }
+
+        // Código de demostración
+        // En producción debe generarse y almacenarse
+        // en el sistema para garantizar su unicidad.
+        document.getElementById("codigoReserva").textContent =
+            generarCodigo();
+    </script>
+
+</body>
+</html>
