@@ -1,0 +1,122 @@
+:root {
+    --azul-epn: #0b2d5b;
+    --azul-claro: #1f5fa8;
+    --fondo: #f3f5f9;
+    --texto: #1e2633;
+    --gris: #6b7585;
+    --borde: #dde2ea;
+    --redes: #1f7a8c;
+    --software: #6a4c93;
+    --electronica: #d17a22;
+    --fisica: #2f8f4e;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: "Segoe UI", Roboto, Arial, sans-serif;
+    background: var(--fondo);
+    color: var(--texto);
+    line-height: 1.5;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.contenedor { width: min(1200px, 92%); margin: 0 auto; }
+
+/* Encabezado */
+.encabezado {
+    background: linear-gradient(135deg, var(--azul-epn), var(--azul-claro));
+    color: #fff;
+    padding: 1.6rem 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .15);
+}
+.encabezado h1 { font-size: 1.8rem; letter-spacing: .5px; }
+.encabezado p { opacity: .85; }
+
+main { flex: 1; padding: 2rem 0; }
+
+.titulo-seccion { margin-bottom: 1.5rem; }
+.titulo-seccion h2 { color: var(--azul-epn); font-size: 1.5rem; }
+.titulo-seccion p { color: var(--gris); }
+
+/* Catálogo en cuadrícula */
+.catalogo {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.25rem;
+}
+
+.tarjeta {
+    background: #fff;
+    border: 1px solid var(--borde);
+    border-top: 5px solid var(--color-tipo, var(--azul-claro));
+    border-radius: 10px;
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: .9rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, .06);
+    transition: transform .15s, box-shadow .15s;
+}
+.tarjeta:hover { transform: translateY(-3px); box-shadow: 0 6px 16px rgba(0, 0, 0, .1); }
+
+.tarjeta.redes       { --color-tipo: var(--redes); }
+.tarjeta.software    { --color-tipo: var(--software); }
+.tarjeta.electronica { --color-tipo: var(--electronica); }
+.tarjeta.fisica      { --color-tipo: var(--fisica); }
+
+.tarjeta-cabecera { display: flex; justify-content: space-between; align-items: flex-start; gap: .5rem; }
+.tarjeta h3 { font-size: 1.1rem; color: var(--azul-epn); }
+
+.etiqueta {
+    background: var(--color-tipo, var(--azul-claro));
+    color: #fff;
+    font-size: .75rem;
+    font-weight: 600;
+    padding: .2rem .6rem;
+    border-radius: 999px;
+    white-space: nowrap;
+}
+
+.datos { list-style: none; display: grid; gap: .35rem; font-size: .92rem; }
+.datos li { display: flex; gap: .5rem; }
+.datos .clave { color: var(--gris); min-width: 90px; }
+.capacidad { font-weight: 700; color: var(--color-tipo, var(--azul-claro)); }
+
+.equipos h4 {
+    font-size: .85rem;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    color: var(--gris);
+    margin-bottom: .4rem;
+}
+.equipos ul { list-style: none; border-top: 1px solid var(--borde); }
+.equipos li {
+    display: flex;
+    justify-content: space-between;
+    padding: .35rem 0;
+    border-bottom: 1px solid var(--borde);
+    font-size: .9rem;
+}
+.cantidad {
+    background: var(--fondo);
+    border-radius: 6px;
+    padding: 0 .5rem;
+    font-weight: 600;
+    font-size: .85rem;
+}
+
+.mensaje {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 2rem;
+    background: #fff;
+    border-radius: 10px;
+    color: var(--gris);
+}
+.mensaje.error { color: #b3261e; border: 1px solid #f2b8b5; }
+
+.pie { text-align: center; padding: 1rem; color: var(--gris); font-size: .85rem; }
+
