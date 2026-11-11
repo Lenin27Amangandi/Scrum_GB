@@ -1,0 +1,97 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Reservas de Laboratorios EPN</title>
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+
+<div class="contenedor">
+
+    <h1>Escuela Politécnica Nacional</h1>
+    <h2>Solicitud de Reserva de Laboratorios</h2>
+
+    {% with mensajes = get_flashed_messages(with_categories=true) %}
+        {% for categoria, mensaje in mensajes %}
+            <p class="{{ categoria }}">{{ mensaje }}</p>
+        {% endfor %}
+    {% endwith %}
+
+    <form method="POST" action="/reservar">
+
+        <label>Laboratorio:</label>
+        <select name="laboratorio_id" id="laboratorio" required>
+            <option value="">Seleccione un laboratorio</option>
+            {% for lab in laboratorios %}
+                <option value="{{ lab.id }}">
+                    {{ lab.nombre }} - {{ lab.edificio }}
+                </option>
+            {% endfor %}
+        </select>
+
+        <label>Franja horaria disponible:</label>
+        <select name="franja_id" id="franja" required>
+            <option value="">Seleccione una franja</option>
+            {% for franja in franjas %}
+                <option value="{{ franja.id }}"
+                        data-lab="{{ franja.laboratorio_id }}">
+                    {{ franja.laboratorio }} |
+                    {{ franja.fecha }} |
+                    {{ franja.horario }}
+                </option>
+            {% endfor %}
+        </select>
+
+        <label>Correo institucional:</label>
+        <input
+            type="email"
+            name="correo"
+            placeholder="usuario@epn.edu.ec"
+            pattern="[A-Za-z0-9._%+-]+@epn\.edu\.ec"
+            required
+        >
+
+        <label>Código único:</label>
+        <input
+            type="text"
+            name="codigo_unico"
+            placeholder="Ingrese su código único"
+            required
+        >
+
+        <label>Motivo de uso:</label>
+        <textarea
+            name="motivo"
+            placeholder="Describa para qué necesita el laboratorio"
+            required
+        ></textarea>
+
+        <button type="submit">
+            Enviar solicitud de reserva
+        </button>
+
+    </form>
+</div>
+
+<script>
+const laboratorio = document.getElementById("laboratorio");
+const franja = document.getElementById("franja");
+
+laboratorio.addEventListener("change", function () {
+    const id = this.value;
+
+    Array.from(franja.options).forEach(option => {
+        if (!option.value) return;
+
+        option.hidden = option.dataset.lab !== id;
+    });
+
+    franja.value = "";
+});
+</script>
+
+</body>
+</html>
