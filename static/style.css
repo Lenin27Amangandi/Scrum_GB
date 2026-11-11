@@ -1,0 +1,77 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f2f4f7;
+    color: #222;
+}
+
+.contenedor {
+    width: 90%;
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 32px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px #0002;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+input,
+button {
+    padding: 10px;
+    font-size: 16px;
+}
+
+.horas {
+    display: flex;
+    gap: 16px;
+}
+
+.horas div {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 8px;
+}
+
+button {
+    margin-top: 8px;
+    border: 0;
+    color: white;
+    background: #2563eb;
+    cursor: pointer;
+}
+
+.mensaje {
+    margin-top: 20px;
+    padding: 12px;
+}
+
+.exito {
+    background: #dcfce7;
+}
+
+.error {
+    background: #fee2e2;
+}
+
+.reservas {
+    padding-left: 20px;
+    line-height: 1.8;
+}
+
+@media (max-width: 500px) {
+    .horas {
+        flex-direction: column;
+        gap: 8px;
+    }
+}
