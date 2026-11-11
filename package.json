@@ -1,9 +1,1 @@
-{
-  "name": "scrum-gb",
-  "private": true,
-  "type": "module",
-  "scripts": {
-    "start": "python3 -m http.server 8000 --bind 127.0.0.1",
-    "test": "node --test"
-  }
-}
+{"name":"scrum-gb","private":true,"type":"module","scripts":{"start":"python3 app.py","test":"node --test"}}

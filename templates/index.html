@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservas de laboratorios</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='estados.css') }}">
+<script defer src="{{ url_for('static', filename='estados.js') }}"></script>
+</head>
+<body>
+    <main class="contenedor">
+        <h1>Reserva de laboratorio</h1>
+        <p>Selecciona una fecha, laboratorio y franja horaria.</p>
+
+        <form method="POST">
+            <label for="nombre">Nombre</label>
+            <input id="nombre" name="nombre" type="text" required>
+
+            <label for="fecha">Fecha</label>
+            <input id="fecha" name="fecha" type="date" required>
+
+            <label for="laboratorio">Laboratorio</label>
+            <select id="laboratorio" name="laboratorio" required>
+            {% for lab in laboratorios %}<option value="{{ lab.id }}">{{ lab.nombre }}</option>{% endfor %}
+            </select>
+            <label for="correo">Correo institucional</label><input id="correo" name="correo" type="email" required>
+            <label for="codigo_unico">Código único del estudiante</label><input id="codigo_unico" name="codigo_unico" required>
+            <label for="motivo">Motivo</label><input id="motivo" name="motivo" required>
+            <div class="horas">
+                <div>
+                    <label for="hora_inicio">Hora de inicio</label>
+                    <input id="hora_inicio" name="hora_inicio" type="time" required>
+                </div>
+                <div>
+                    <label for="hora_fin">Hora de fin</label>
+                    <input id="hora_fin" name="hora_fin" type="time" required>
+                </div>
+            </div>
+
+            <button type="submit">Confirmar reserva</button>
+        </form>
+
+        {% if mensaje %}
+            <p class="mensaje {{ tipo_mensaje }}">{{ mensaje }}</p>
+        {% endif %}
+
+        <section aria-labelledby="estados-titulo"><h2 id="estados-titulo">Disponibilidad por franja</h2>
+        <p class="leyenda"><span data-state="disponible">Verde: Disponible</span> · <span data-state="ocupado">Rojo: Ocupado</span> · <span data-state="mantenimiento">Amarillo: Mantenimiento</span></p>
+        <p id="estado-carga" role="status"></p><ul id="franjas" class="franjas"></ul></section>
+        <h2>Catálogo de laboratorios</h2>
+        {% for lab in laboratorios %}<details><summary>{{ lab.nombre }} · {{ lab.capacidad }} personas</summary><p>{{ lab.edificio }} · {{ lab.facultad }}</p><ul>{% for equipo in lab.equipos %}<li>{{ equipo.nombre }}: {{ equipo.cantidad }}</li>{% endfor %}</ul></details>{% endfor %}
+        <h2>Franjas bloqueadas</h2>
+        {% if reservas %}
+            <ul class="reservas">
+                {% for reserva in reservas %}
+                    <li>
+                        <strong>{{ reserva["laboratorio"] }}</strong>
+                        — {{ reserva["fecha"] }}
+                        — {{ reserva["hora_inicio"] }} a {{ reserva["hora_fin"] }}
+                        ({{ reserva["nombre"] }})
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>Aún no hay reservas confirmadas.</p>
+        {% endif %}
+    </main>
+</body>
+</html>

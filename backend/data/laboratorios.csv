@@ -1,0 +1,10 @@
+id,nombre,tipo,edificio,facultad,capacidad,equipos
+LAB-RED-01,Laboratorio de Redes y Telecomunicaciones,Redes,Edificio 20 - Sistemas,Facultad de Ingeniería de Sistemas (FIS),30,Router Cisco ISR 4321:8;Switch Cisco Catalyst 2960:12;Access Point Ubiquiti:6;Rack de comunicaciones:2;PC de escritorio:30
+LAB-RED-02,Laboratorio de Ciberseguridad,Redes,Edificio 20 - Sistemas,Facultad de Ingeniería de Sistemas (FIS),24,Firewall Fortinet FortiGate:4;Switch administrable:8;PC de escritorio:24;Servidor Dell PowerEdge:2
+LAB-SW-01,Laboratorio de Desarrollo de Software,Software,Edificio 20 - Sistemas,Facultad de Ingeniería de Sistemas (FIS),35,PC Core i7 16GB RAM:35;Proyector Epson:1;Pizarra digital:1
+LAB-SW-02,Laboratorio de Computación Avanzada,Software,Edificio 20 - Sistemas,Facultad de Ingeniería de Sistemas (FIS),25,Workstation con GPU NVIDIA RTX:25;Servidor de cómputo:1;Proyector Epson:1
+LAB-ELE-01,Laboratorio de Electrónica Digital,Electronica,Edificio 17 - Eléctrica y Electrónica,Facultad de Ingeniería Eléctrica y Electrónica (FIEE),20,Osciloscopio digital Tektronix:10;Fuente de poder DC:10;Generador de funciones:10;Multímetro digital:20;Kit FPGA Altera:10
+LAB-ELE-02,Laboratorio de Circuitos Electrónicos,Electronica,Edificio 17 - Eléctrica y Electrónica,Facultad de Ingeniería Eléctrica y Electrónica (FIEE),18,Protoboard:18;Multímetro digital:18;Fuente de poder DC:9;Estación de soldadura:6
+LAB-FIS-01,Laboratorio de Física General,Fisica,Edificio 6 - Ciencias,Facultad de Ciencias (FC),28,Riel de aire:4;Kit de mecánica:7;Cronómetro digital:14;Balanza de precisión:4
+LAB-FIS-02,Laboratorio de Óptica y Ondas,Fisica,Edificio 6 - Ciencias,Facultad de Ciencias (FC),16,Banco óptico:4;Láser He-Ne:4;Kit de lentes y espejos:8;Generador de ondas:4
+
