@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Disponibilidad por horario</title>
+  <link rel="stylesheet" href="src/styles.css">
+  <script type="module" src="src/app.js"></script>
+</head>
+<body>
+  <main>
+    <header>
+      <p class="eyebrow">Bravo Team · HU-03</p>
+      <h1>Disponibilidad por horario</h1>
+      <p>Identifica el estado de cada franja de un vistazo.</p>
+    </header>
+    <section aria-labelledby="legend-title" class="legend">
+      <h2 id="legend-title">Leyenda de estados</h2>
+      <ul>
+        <li><span class="dot" data-state="disponible" aria-hidden="true"></span>Verde: Disponible</li>
+        <li><span class="dot" data-state="ocupado" aria-hidden="true"></span>Rojo: Ocupado</li>
+        <li><span class="dot" data-state="mantenimiento" aria-hidden="true"></span>Amarillo: Mantenimiento</li>
+      </ul>
+    </section>
+    <section aria-labelledby="schedule-title">
+      <h2 id="schedule-title">Franjas horarias</h2>
+      <p>Cambia un estado para ver el indicador actualizado al instante.</p>
+      <ul id="schedule" class="schedule"></ul>
+    </section>
+    <p id="announcement" class="sr-only" role="status" aria-live="polite"></p>
+    <noscript>Activa JavaScript para consultar y actualizar las franjas horarias.</noscript>
+  </main>
+</body>
+</html>
